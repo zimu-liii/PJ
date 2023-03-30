@@ -1,7 +1,12 @@
+#from python standard library
 math
 random
 json
+
+#need to be installed by pip or conda
 matplotlib
 numpy
+
+#if you do not want to do error simulation and machine learning with SIMIC, the librarys below are not necessary to install. 
 scikit-image
 tensorflow

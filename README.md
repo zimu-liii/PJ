@@ -3,12 +3,12 @@ This abbreviation comes from `Strand Independent Matrix Image Coding`.
 
 ---
 
-### Research Feild
+## Research Feild
 DNA data storage; Image recovery
 
 ---
 
-### Description
+## Description
 **SIMIC** is a **DNA storage algorithm** developed for **image** coding and decoding. It is aimed at realizing absolutely reliable recovery of image information even under high DNA sequence missing rate. Different from other DNA storage image codecs, SIMIC does not focus on how to perfectly restore the original image with 100% accuracy. In contrast, it reserves the missing parts in situ and exhibits the remaining correct parts. **Its first concern is to make sure the image could be opened and give its information to the greatest extent, rather than totally fails to be obtained as a result of damage on the vulnerable header part of the file.**
 
 SIMIC realized this goal based on two central ideas: **pixel matrix and strand independent coding**. Turning an image file into a pixel matrix makes the image get rid of the restriction of highly formatting and encrypted header part, and becomes robust to damage on any part of its information. Strand independent coding makes sure every DNA sequence is independent to each other, so that one broken sequence would not influence the decoding of another sequence. **Based on these two conceptions, SIMIC is able to successfully open highly damaged pictures, which is impossible for other error-correcting methods to recover due to the extremely high missing rate exceeding the error redundancy.** In our article, we also showed in simulations that the partly damage does not affect the potential of image in some applications such as ML image recognition.
@@ -19,16 +19,16 @@ For more details about the description and characterization of SIMIC, please ref
 
 ---
 
-### Usage
-#### Requirments
+## Usage
+### Requirments
 This codec is developed in `Python 3.10.5`. However, any `python3` environment would be OK to run SIMIC. 
 
 Dependent packages are listed in the `requirements.txt` document. If you only want to use the encoding and decoding functions of SIMIC, you just have to make sure your python have the standard libraries `math, random and json`, and have installed `matplotlib and numpy`. Other packages listed in requirements like `scikit-image and tensorflow` are only used in the error simulation part when we prepared our article and needed to prove the robustness of SIMIC. If you want to see how SIMIC performs in high error system, you can install these packages and refer to our codes in `simu` and `ml` folder.
 
-#### Install
+### Install
 pass
 
-#### Examples
+### Examples
 
 Before start using SIMIC, the first thing to do is to import it to your code:
 
@@ -92,7 +92,7 @@ Note that if you give a colour picture to the code, it will only return you a gr
 
 ---
 
-### Documents Annotation
+## Documents Annotation
 Explainations on the file uploaded in this github page are listed as belows:
 
 - **input** folder: where input files is stored; no code is stored here
@@ -106,5 +106,5 @@ Explainations on the file uploaded in this github page are listed as belows:
 
 ---
 
-### Contact
+## Contact
 The author of SIMIC is also the author of the article: [<u>超链接显示名</u>](超链接地址). If you want to use SIMIC, please remember to refer to and cite the article given above. Contact: [<u>lzm.shjtdx.jc.19@sjtu.edu.cn</u>](lzm.shjtdx.jc.19@sjtu.edu.cn)

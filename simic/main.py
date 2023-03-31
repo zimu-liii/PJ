@@ -59,11 +59,21 @@ class SIMIC:
             return decode_with_adaptor(sequences)
      
     #encode&decode function but receive input of a file
-    def encode_file(self,file):
-        return encode(getdata(file,'encode'))
+    def encode_file(self,file,adaptor=False):
+        img = getdata(file,'encode')
+        img = self.encode_input_check(img)
+        if adaptor==False:
+            return encode_no_adaptor(img)
+        if adaptor==True:
+            return encode(img)
       
-    def decode_file(self,file):
-        return decode(getdata(file,'decode')) 
+    def decode_file(self,file,adaptor=False):
+        sequences = getdata(file,'decode')
+        sequences = self.decode_input_check(sequences,adaptor)
+        if adaptor==False:
+            return decode(sequences)
+        if adaptor==True:
+            return decode_with_adaptor(sequences)
      
     #show the decoded image
     def show(self,bytelist):

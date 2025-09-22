@@ -55,8 +55,17 @@ def dnatom5(seq):
     s5 = de_rotating(seq[3],seq[4])
     return s1+s2+s3+s4+s5
 
-def m5to9(s):
+def m5ton(s):
     return int(s[0])*144+int(s[1])*48+int(s[2])*12+int(s[3])*3+int(s[4])
 
-def main(seq):
-    return m5to9(dnatom5(seq))
+def nto9(n):
+    b = bin(n)[2:]
+    while len(b) < 9:
+        b = '0' + b
+    return b
+
+def main1(seq):
+    return m5ton(dnatom5(seq))
+
+def main2(seq):
+    return nto9(m5ton(dnatom5(seq)))

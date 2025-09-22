@@ -8,7 +8,8 @@ Created on Thu Feb 16 10:59:32 2023
 import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
-
+import os
+os.chdir('..')
 from simulation.main import SIMU
 from ml.model import model_preparation
 

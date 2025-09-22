@@ -1,21 +1,14 @@
-# SIMIC
-This abbreviation comes from `Strand Independent Matrix Image Coding`.
-
----
-
-## Research Feild
-DNA data storage; Image recovery
-
----
+# PJ codec for DNA data storage
+PJ codec, composed of PM (Partition Mapping) and JR (Jump-Rotating) algorithm, is designed for reliable DNA data storage retreival. Detailed description of the principle can be found in the paper [<u>Paper link</u>](). 
 
 ## Description
-**SIMIC** is a **DNA storage algorithm** developed for **image** coding and decoding. It is aimed at realizing absolutely reliable recovery of image information even under high DNA sequence missing rate. Different from other DNA storage image codecs, SIMIC does not focus on how to perfectly restore the original image with 100% accuracy. In contrast, it reserves the missing parts in situ and exhibits the remaining correct parts. **Its first concern is to make sure the image could be opened and give its information to the greatest extent, rather than totally fails to be obtained as a result of damage on the vulnerable header part of the file.**
+Current version of **PJ** codec is a **DNA storage algorithm** developed for **grayscale image** coding and decoding. It is aimed at realizing absolutely reliable recovery of image information even under high DNA sequence missing rate. Different from other DNA storage image codecs, SIMIC does not focus on how to perfectly restore the original image with 100% accuracy. In contrast, it reserves the missing parts in situ and exhibits the remaining correct parts. **Its first concern is to make sure the image could be opened and give its information to the greatest extent, rather than totally fails to be obtained as a result of damage on the vulnerable header part of the file.**
 
-SIMIC realized this goal based on two central ideas: **pixel matrix and strand independent coding**. Turning an image file into a pixel matrix makes the image get rid of the restriction of highly formatting and encrypted header part, and becomes robust to damage on any part of its information. Strand independent coding makes sure every DNA sequence is independent to each other, so that one broken sequence would not influence the decoding of another sequence. **Based on these two conceptions, SIMIC is able to successfully open highly damaged pictures, which is impossible for other error-correcting methods to recover due to the extremely high missing rate exceeding the error redundancy.** In our article, we also showed in simulations that the partly damage does not affect the potential of image in some applications such as ML image recognition.
+PJ realized this goal based on the central idea: **partition mapping (PM)**. On the one hand, turning an image file into a pixel matrix makes the image get rid of the restriction of highly formatting and encrypted header part, and becomes robust to damage on any part of its information. On the other hand, strand independent coding makes sure every DNA sequence is independent to each other, so that one broken sequence would not influence the decoding of another sequence. **Based on these two conceptions, PM is able to successfully open highly damaged pictures, which is impossible for other error-correcting methods to recover due to the extremely high missing rate exceeding the error redundancy.** In our article, we also showed in simulations that the partly damage does not affect the potential of image in some applications such as ML image recognition.
 
-Besides, another creative design in our coding scheme is the **jotating (jump-rotating)** DNA coding method. It was generated from the rotating algorithm [reference] but has made some modifications to improve its performance. Since DNA sequences could become unstable with patterns like continuous same bases (e.g. ‘AAA’, ‘GGGGG’), the original rotating method was designed to get legal DNA sequences by avoiding adjacent repetitive bases. However, this condition is too strict for a DNA sequence to be biologically stable. Thus, jotating allows jumping in a certain step when using rotating, which could ease the restriction of rotating and reduce the sacrifice of storage density caused by rotating. **Jotating could be a very useful method in generating qualified DNA sequences in DNA storage research.**
+Besides, another creative design in our coding scheme is the **jump-rotating (JR)** DNA coding method. It was generated from the rotating algorithm [reference] but has made some modifications to improve its performance. Since DNA sequences could become unstable with patterns like continuous same bases (e.g. ‘AAA’, ‘GGGGG’), the original rotating method was designed to get legal DNA sequences by avoiding adjacent repetitive bases. However, this condition is too strict for a DNA sequence to be biologically stable. Thus, JR allows jumping in a certain step when using rotating, which could ease the restriction of rotating and reduce the sacrifice of storage density caused by rotating. **JR could be a very useful method in generating qualified DNA sequences in DNA storage research.**
 
-For more details about the description and characterization of SIMIC, please refer to our **article**: [<u>超链接显示名</u>](超链接地址).
+For more details about the description and characterization of PJ, please refer to our **article**: [<u>超链接显示名</u>](超链接地址).
 
 ---
 
@@ -53,7 +46,7 @@ The code will return you `seq` which is a list of DNA sequences as the output re
 
 By default, the code does not add adaptors to the generated DNA sequences. If adaptors are needed, you can choose to add them by changing the default parameter: 
 
-```python
+```python      
 seq = s.encode(img, adaptor=True)
 ```
 

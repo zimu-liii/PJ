@@ -12,65 +12,56 @@ Created on Mon Dec  5 15:30:36 2022
     Expecting output: a 2D list (pixel matrix)
 '''
 
-from simic.jotating.dejotating import main as segment
+
+from jotating.dejotating import main1 as segment
+from jotating.dejotating import main2 as segment_b
 
 '''Part1: Recover the order of sequences in the origin matrix.
           A single cell in the matrix contains a 90nt DNA 
           (removing adaptor and index from 141nt DNA)'''
 
-#The adaptor-removing process is not necessary according to whether
-#your sequencing results contains the adaptor part or not.
-def remove_adaptor(seqlist141):
-    dna = [i[20:-21] for i in seqlist141]
-    return dna
-
 #sort by the index
 def index_parsing(seqlist100):
-    dna = {}
+    seqdict = {}
     for i in seqlist100:
         index1 = segment(i[-10:-5])
-        if index1 not in dna:
-            dna[index1] = [i[:-10]+i[-5:]]
-        if index1 in dna:
-            dna[index1].append(i[:-10]+i[-5:])
+        if index1 not in seqdict:
+            seqdict[index1] = [i[:-10]+i[-5:]]
+        if index1 in seqdict:
+            seqdict[index1].append(i[:-10]+i[-5:])
     
-    for j in dna:
-        dna1 = {}
-        for k in dna[j]:
+    for j in seqdict:
+        linedict = {}
+        for k in seqdict[j]:
             index2 = segment(k[-5:])
-            dna1[index2] = k[:-5]   
+            linedict[index2] = k[:-5]   
         #fill the missing part to ensure the legality of the recovered matrix
-        for n in range(max(dna1)+1):
-            if n not in dna1:
-                dna1[n] = 'ACAAC'*18
-        dna[j] = dna1
+        for n in range(max(linedict)+1):
+            if n not in linedict:
+                linedict[n] = 'ACAAC'*18
+        seqdict[j] = linedict
     
-    return dna
+    return seqdict
 
 #dict to list
-def to_list(dna):
-    dna2 = sorted(dna.items(), key=lambda d: d[0])
-    dna2list = [dna2[i][1] for i in range(len(dna2))]
+def to_list(seqdict):
+    seqdict_sorted = sorted(seqdict.items(), key=lambda d: d[0])
+    seqlist_sorted = [seqdict_sorted[i][1] for i in range(len(seqdict_sorted))]
 
-    dnalist = []
-    for j in dna2list:
-        dna3 = sorted(j.items(), key=lambda d: d[0])
-        dna3list = [dna3[k][1] for k in range(len(dna3))]
-        dnalist.append(dna3list)
+    seqlist = []
+    for j in seqlist_sorted:
+        linedict_sorted = sorted(j.items(), key=lambda d: d[0])
+        linelist_sorted = [linedict_sorted[k][1] for k in range(len(linedict_sorted))]
+        seqlist.append(linelist_sorted)
 
-    return dnalist
+    return seqlist
 
 #part main
 def sort(seqlist100):
-    dna2 = index_parsing(seqlist100)
-    dnalist = to_list(dna2)
-    return dnalist
+    seqdict = index_parsing(seqlist100)
+    seqlist = to_list(seqdict)
+    return seqlist
 
-def sort_with_adaptor(seqlist141):
-    dna = remove_adaptor(seqlist141)
-    dna2 = index_parsing(dna)
-    dnalist = to_list(dna2)
-    return dnalist
 
 '''Part2: In-row operation, including
           spliting 90nt units into 5nt units
@@ -162,13 +153,6 @@ def matrix_check(bytelist):
 '''Main'''
 
 def decode(seqlist100):
-    dnalist = sort(seqlist100)
-    bytelist = matrix(dnalist)
-    matrix_check(bytelist)
-    return bytelist
-
-def decode_with_adaptor(seqlist141):
-    seqlist100 = remove_adaptor(seqlist141)
     dnalist = sort(seqlist100)
     bytelist = matrix(dnalist)
     matrix_check(bytelist)

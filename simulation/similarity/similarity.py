@@ -13,4 +13,4 @@ def img_sim(img1,img2):
     if img1.shape != img2.shape:
         img2 = np.resize(img2,img1.shape)
         
-    return ssim(img1,img2,channel_axis = True)
+    return ssim(img1,img2)

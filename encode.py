@@ -14,7 +14,9 @@ Created on Tue Sep 27 09:16:43 2022
     
 '''
 
-from simic.jotating.jotating import main as segment
+
+
+from jotating.jotating import main as segment
 
 '''Step1: Regroup 8bit units into 9bit units'''
 
@@ -82,44 +84,13 @@ def add_index(seqlist90,row):
   
     return seqlist100
 
-#add adaptor
-def add_adaptor(seqlist105):
-    
-    adaptor1 = 'ACACGACGCTCTTCCGATCT' #20nt
-    adaptor2 = 'AGATCGGAAGAGCACACGTCT' #21nt
-    
-    seqlist141 = [adaptor1+i+adaptor2 for i in seqlist105] 
-    return seqlist141
-
 #part main
-def merge_no_adaptor(seqlist5,row):
+def merge(seqlist5,row):
     seqlist90 = merge_nt(seqlist5)
     seqlist100 = add_index(seqlist90,row)
     return seqlist100
 
-def merge(seqlist5,row):
-    seqlist90 = merge_nt(seqlist5)
-    seqlist100 = add_index(seqlist90,row)
-    seqlist141 = add_adaptor(seqlist100)
-    return seqlist141
-
 '''Main function'''
-
-def encode_no_adaptor(img):
-    
-    bitlist = regroup(img)
-    
-    ntlist = []
-    for i in bitlist:
-        ntlist.append([segment(j) for j in i])
-    
-    seqlist_whole = []
-    for i in range(len(ntlist)):
-        seqlist141 = merge_no_adaptor(ntlist[i],i)
-        for j in seqlist141:
-            seqlist_whole.append(j)
-    
-    return seqlist_whole
 
 def encode(img):
     

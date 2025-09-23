@@ -10,8 +10,6 @@ Besides, another creative design in our coding scheme is the **jump-rotating (JR
 
 For more details about the description and characterization of PJ, please refer to our **article**  listed above.
 
----
-
 ## Usage
 ### Requirments
 This codec is developed in `Python 3.10.5`. However, any `python3` environment would be OK to run PJ. 
@@ -75,8 +73,6 @@ save_image(img,img_name)
 
 Note that if you give a colour picture to the code, it will only return you a gray picture since the code is designed to work on 2D pixel matrices (gray-scale pictures). 
 
----
-
 ## Documents Annotation
 Explainations on the file uploaded in this github page are listed as belows:
 
@@ -88,10 +84,9 @@ Explainations on the file uploaded in this github page are listed as belows:
 - **README.md**: the thing you are reading
 - **requirements.txt**: required dependent packages for PJ
 
----
-
 ## Installation
 We have not yet developed an installable version. A PyPI version is comimg soon. Developers can run the codes directly in the compilation environment first. 
 
 ## Notes
 The author is still a programming learner and is devoted to improve the coding skills. We appreciate your patience for a better version of PJ and we will continue to work on the codes to develop a more equipped software architecture.
+

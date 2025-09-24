@@ -78,6 +78,7 @@ Explainations on the file uploaded in this github page are listed as belows:
 
 - **pj.py**: The **main** module for pj code running, including the file io, encode and decode functions. 
 - **encode.py** and **decode.py**: the codes for encoding and decoding, respectly.
+- **input** folder: where input files is stored; no code is stored here
 - **jotating** folder: the folder where functions of jump-rotating algorithm is realized.
 - **ml** folder: Machine Learning applications of PJ, which is part of the simulation in the article.
 - **simulation** folder: missing simulation of PJ, which is part of the simulation in the article.
@@ -89,4 +90,5 @@ We have not yet developed an installable version. A PyPI version is comimg soon.
 
 ## Notes
 The author is still a programming learner and is devoted to improve the coding skills. We appreciate your patience for a better version of PJ and we will continue to work on the codes to develop a more equipped software architecture.
+
 
